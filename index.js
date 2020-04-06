@@ -7,6 +7,7 @@ var _slider = document.getElementById('sliderContainer'),
     _currentSlide = 0
     slideListItems = [];
 
+  if (_slides.length) {
     // set list dots
     for (var i = 0; i < _slideLength; i++) {
       var listItem = document.createElement('li');
@@ -34,9 +35,6 @@ var _slider = document.getElementById('sliderContainer'),
     })
 
     prevSlide.addEventListener('click', function() {
-      console.log(_currentSlide)
-      console.log((_slideLength - 1))
-      console.log(_currentSlide <= (_slideLength - 1))
       _currentSlide <= 0 ? _currentSlide = (_slideLength - 1) : _currentSlide--;
       changeSlide()
     })
@@ -62,3 +60,4 @@ var _slider = document.getElementById('sliderContainer'),
       })
 
     }
+  }

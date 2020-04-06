@@ -116,10 +116,13 @@ body {
   top: 50%;
   left: 200%;
   transform: translate(-50%, -50%);
-  transition: .3s ease-in-out;
+  max-height: 12rem;
+  overflow: hidden;
+  transition: .4s ease-in-out;
 }
 
 .quote-container.current-slide {
+  max-height: auto;
   left: 50%;
   opacity: 1;
 }
@@ -187,7 +190,7 @@ body {
   width: .5rem;
   border-radius: 100%;
   cursor: pointer;
-  transition: .3s ease-in-out;
+  transition: .4s ease-in-out;
 }
 
 #sliderList li.current {
