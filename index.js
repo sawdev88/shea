@@ -30,14 +30,22 @@ var _slider = document.getElementById('sliderContainer'),
 
     // handle arrows on click
     _nextSlide.addEventListener('click', function() {
-      _currentSlide >= (_slideLength - 1) ? _currentSlide = 0 : _currentSlide++;
-      changeSlide()
+      nextSlide()
     })
 
-    prevSlide.addEventListener('click', function() {
+    _prevSlide.addEventListener('click', function() {
+      prevSlide()
+    })
+
+    function nextSlide() {
+      _currentSlide >= (_slideLength - 1) ? _currentSlide = 0 : _currentSlide++;
+      changeSlide()
+    }
+
+    function prevSlide() {
       _currentSlide <= 0 ? _currentSlide = (_slideLength - 1) : _currentSlide--;
       changeSlide()
-    })
+    }
 
     function changeSlide(idx = _currentSlide) {
       // remove selected class from slider dots
@@ -61,3 +69,52 @@ var _slider = document.getElementById('sliderContainer'),
 
     }
   }
+
+// swipe
+
+function swipedetect(el, callback){
+    var touchsurface = el,
+    swipedir,
+    startX,
+    startY,
+    distX,
+    distY,
+    threshold = 150, //required min distance traveled to be considered swipe
+    restraint = 100, // maximum distance allowed at the same time in perpendicular direction
+    allowedTime = 300, // maximum time allowed to travel that distance
+    elapsedTime,
+    startTime,
+    handleswipe = callback || function(swipedir){}
+
+    touchsurface.addEventListener('touchstart', function(e){
+        var touchobj = e.changedTouches[0];
+        swipedir = 'none';
+        dist = 0;
+        startX = touchobj.pageX;
+        startY = touchobj.pageY;
+        startTime = new Date().getTime();
+        e.preventDefault();
+    }, false)
+
+    touchsurface.addEventListener('touchmove', function(e){
+        e.preventDefault();
+    }, false)
+
+    touchsurface.addEventListener('touchend', function(e){
+        var touchobj = e.changedTouches[0];
+        distX = touchobj.pageX - startX;
+        distY = touchobj.pageY - startY;
+        elapsedTime = new Date().getTime() - startTime ;
+        if (elapsedTime <= allowedTime){
+            if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint){
+                swipedir = (distX < 0) ? nextSlide() : prevSlide()
+            }
+        }
+        handleswipe(swipedir)
+        e.preventDefault()
+    }, false)
+}
+
+swipedetect(_slider, function(swipedir){
+    console.log(swipedir)
+});
