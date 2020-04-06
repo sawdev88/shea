@@ -21,6 +21,12 @@ var _slider = document.getElementById('sliderContainer'),
       slideListItems.push(listItem)
     }
 
+    //init slides
+    _slides[0].classList.add('current-slide');
+    _slides.forEach((node, i) => {
+      node.setAttribute('data-index', i)
+    })
+
     // handle arrows on click
     _nextSlide.addEventListener('click', function() {
       _currentSlide >= (_slideLength - 1) ? _currentSlide = 0 : _currentSlide++;
