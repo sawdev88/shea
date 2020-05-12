@@ -92,6 +92,16 @@ body {
     .border-right  {
       display: none;
     }
+
+    .mobile-border-bottom {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      height: 1px;
+      width: 90%;
+      background: #d8d8d8;
+    }
 }
 
 
