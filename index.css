@@ -245,3 +245,58 @@ body {
       width: 16px;
     }
 }
+
+
+
+
+
+
+
+/* quote header */
+
+#quoteContainer {
+  transition: .3s;
+  width: 70%;
+  padding-left: 3rem;
+}
+
+.quote-header {
+  height: 80vh;
+  margin: 0 5%;
+  background-image: url('https://images.squarespace-cdn.com/content/v1/5e711b6f5641b16d0318dbf0/1588037192367-R9ZBVUNMOG9NF04MNPN0/ke17ZwdGBToddI8pDm48kLuN_94q3AxAysVNrv0VneJZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpwzVfHXuQCUmDKbX5Vyv72fGO2SUhVYQftWeRXKo4YIWK-F2UXGCAeiLZpZlsIUEU8/PJC-circles-lowres-white-bg.gif');
+  background-size: 50% 80%;
+  background-repeat: no-repeat;
+  background-position: right top;
+  position: relative;
+}
+
+.arrows {
+  position: absolute;
+  top: 30%;
+  left: 0;
+}
+
+.arrows img {
+  height: 1.5rem;
+  width: auto;
+  display: block;
+  opacity: .5;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+}
+
+.arrows img:hover {
+  opacity: 1;
+}
+
+#headerPrev {
+  margin-top: 2rem;
+  transform: rotate(180deg);
+}
+
+/* for local */
+
+#quoteContainer h2{
+
+  font-size: 58px;
+}
